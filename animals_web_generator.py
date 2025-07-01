@@ -1,5 +1,6 @@
 import data_fetcher
 
+
 with open("animals_template.html", "r") as file:
     template = file.read()
 
