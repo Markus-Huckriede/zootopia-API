@@ -157,7 +157,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+../.env
 <<<<<<< HEAD
 .envrc
 =======
@@ -238,3 +238,4 @@ __marimo__/
 =======
 .cursorindexingignore
 >>>>>>> 90ffb98 (Initial commit with project data)
+.env
