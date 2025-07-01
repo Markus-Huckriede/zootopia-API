@@ -1,11 +1,8 @@
-import requests
+import data_fetcher
 
 with open("animals_template.html", "r") as file:
     template = file.read()
 
-def load_data(file_path):
-    with open(file_path, "r") as handle:
-        return json.load(handle)
 
 def serialize_animal(animal_obj):
     output = ''
@@ -20,23 +17,10 @@ def serialize_animal(animal_obj):
     return output
 
 
-def fetch_animal_data(name):
-    api_url = 'https://api.api-ninjas.com/v1/animals?name={}'.format(name)
-    response = requests.get(api_url, headers={'X-Api-Key': '0K1fwHLpvK0kCtztNfwR7Q==xpgs5EGeVJ76ua69'})
-    if response.status_code == requests.codes.ok:
-        data = response.json()
-        if data:
-            return data
-        else:
-            print(f"The animal {name} doesn't exist")
-            return None
-    else:
-        print("Error:", response.status_code, response.text)
-        return None
-
 def main():
     name = input("Enter a name of an animal: ")
-    animals_data = fetch_animal_data(name)
+    animals_data = data_fetcher.fetch_animal_data(name)
+
 
     if not animals_data:
         animals_info = f" <h2>The animal '{name}' doesn't exist.</h2>"
